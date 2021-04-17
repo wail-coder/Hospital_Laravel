@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Roles;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
+use Session;
 
 class UserController extends Controller
 {
@@ -56,11 +57,12 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'password_status' => 0,
+            'password_status' => 1,
             ]);
 
-        var_dump($request->validated());
         
+        Session::flash('message-success', 'The user has been created'); 
+        return $this->index();
     }
 
     /**

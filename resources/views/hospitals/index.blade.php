@@ -8,8 +8,33 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <!-- This example requires Tailwind CSS v2.0+ -->
-<div class="flex flex-col">
+
+          <div class="flex space-x-4">
+         
+          <div class="grid grid-flow-col auto-cols-max">
+            <a href="#" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded-full">
+              Add Hospital
+            </a>
+          </div>
+          <div class="grid grid-flow-col auto-cols-max">
+            <a href="#" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded-full">
+              Add Building
+            </a>
+          </div>
+          <div class="grid grid-flow-col auto-cols-max">
+            <a href="#" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded-full">
+              Add Floor
+            </a>
+          </div>
+          <div class="grid grid-flow-col auto-cols-max">
+            <a href="#" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded-full">
+              Add Room
+            </a>
+          </div>
+        </div>
+          <br>
+
+        <div class="flex flex-col">
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
         <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">

@@ -8,11 +8,38 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
+          @if(Session::has('message-success'))
+            <div class="alert flex flex-row items-center bg-green-200 p-5 rounded border-b-2 border-green-300">
+              <div class="alert-icon flex items-center bg-green-100 border-2 border-green-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
+                <span class="text-green-500">
+                  <svg fill="currentColor"
+                    viewBox="0 0 20 20"
+                    class="h-6 w-6">
+                    <path fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="alert-content ml-4">
+                <div class="alert-title font-semibold text-lg text-green-800">
+                  Success
+                </div>
+                <div class="alert-description text-sm text-green-600">
+                  {{ Session::get('message-success') }}
+                </div>
+              </div>
+            </div>
+            <br>
+          @endif
+
           <div class="grid grid-flow-col auto-cols-max">
               <a href="{{ route('users.create') }}" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded-full">Add User</a>
 
           </div>
           <br>
+          
 <div class="flex flex-col">
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -66,9 +93,15 @@
                   <div class="text-sm text-gray-500">Optimization</div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                    Active
-                  </span>
+                    @if ($user->password_status == '0')
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                      Active
+                    </span>
+                    @else
+                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                        Not Active
+                      </span>
+                    @endif 
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   @foreach ($user->roles as $role)
