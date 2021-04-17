@@ -12,6 +12,7 @@ class AuthGates
     public function handle($request, Closure $next)
     {
         $user = Auth::user();
+        
 
         if ($user) {
             $roles            = Roles::with('permissions')->get();

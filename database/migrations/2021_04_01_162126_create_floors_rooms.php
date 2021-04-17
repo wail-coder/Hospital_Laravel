@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRolesUserTable extends Migration
+class CreateFloorsRooms extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateRolesUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('roles_user', function (Blueprint $table) {
-            $table->foreignId('roles_id')->references('id')->on('roles')->cascadeOnDelete();
-            $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete();
+        Schema::create('floors_rooms', function (Blueprint $table) {
+            $table->foreignId('floors_id')->references('id')->on('floors')->cascadeOnDelete();
+            $table->foreignId('rooms_id')->references('id')->on('rooms')->cascadeOnDelete();
         });
     }
 
@@ -26,6 +26,6 @@ class CreateRolesUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles_user');
+        Schema::dropIfExists('floors_rooms');
     }
 }

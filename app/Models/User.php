@@ -27,6 +27,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'password_status',
     ];
 
     /**
@@ -63,4 +64,19 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Roles::class); 
     }
+
+    // Only accept a valid password and
+    // hash a password before saving
+    // public function setPasswordAttribute($password)
+    // {
+    //     if ( $password !== null & $password !== "" )
+    //     {
+            
+    //         $this->attributes['password'] = bcrypt($password);
+    //         // $this->name = $user['name'];
+    //         // $this->email = $this->email;
+    //         $this->password_status = 3;
+    //         $this->save();
+    //     }
+    // }
 }

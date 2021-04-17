@@ -23,4 +23,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::group(['middleware' => 'auth'], function () {
 Route::resource('users',  App\Http\Controllers\UserController::class);
+Route::get('users/{id}/reset',  'App\Http\Controllers\UserController@ResetPassword')->name('users.reset');
+Route::put('users/update/{id}',  'App\Http\Controllers\UserController@updatePassword')->name('users.updatePassword');
+Route::resource('hospitals',  App\Http\Controllers\HospitalsController::class);
 });
