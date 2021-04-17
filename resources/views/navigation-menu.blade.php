@@ -16,19 +16,19 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
                 </div>
+
+                @can('SuperAdmin_access')
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('hospitals.index') }}" :active="request()->routeIs('hospitals.*')">
+                        {{ __('Hospitals') }}
+                    </x-jet-nav-link>
+                </div>
+                @endcan
                 
                 @can('SuperAdmin_access')
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.*')">
                         {{ __('Users') }}
-                    </x-jet-nav-link>
-                </div>
-                @endcan
-
-                @can('Admin_access')
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.*')">
-                        {{ __('test') }}
                     </x-jet-nav-link>
                 </div>
                 @endcan

@@ -3,17 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\UpdateUserRequest;
-use App\Http\Requests\AddUserRequest;
-use App\Http\Requests\UpdateUserPasswordRequest;
-use App\Models\User;
+use App\Models\Hospitals;
 use App\Models\Roles;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
 
-class UserController extends Controller
+
+class HospitalsController extends Controller
 {
-    /**
+    
+        /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -22,10 +21,10 @@ class UserController extends Controller
     {
         abort_if(Gate::denies('SuperAdmin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $users = User::with('roles')->get();
-        // $users = User::all();
-        // var_dump($users);
-        return view('users.index', compact('users'));
+        // $hospitals = Hospitals::with('roles')->get();
+        $hospitals = Hospitals::all();
+
+        return view('hospitals.index', compact('hospitals'));
     }
 
     /**
@@ -37,8 +36,6 @@ class UserController extends Controller
     {
         abort_if(Gate::denies('SuperAdmin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('users.create');
-
         //
     }
 
@@ -48,19 +45,11 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AddUserRequest $request)
+    public function store(Request $request)
     {
         abort_if(Gate::denies('SuperAdmin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'password_status' => 0,
-            ]);
-
-        var_dump($request->validated());
-        
+        //
     }
 
     /**
@@ -69,11 +58,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Hospitals $hospital)
     {
         abort_if(Gate::denies('SuperAdmin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('users.show', compact('user'));
+        return view('hospitals.show', compact('hospital'));
     }
 
     /**
@@ -82,14 +71,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Hospitals $hospital)
     {
         abort_if(Gate::denies('SuperAdmin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $roles = Roles::pluck('title', 'id');
+        // $roles = Roles::pluck('title', 'id');
 
-        $user->load('roles');
-        return view('users.edit', compact('user', 'roles'));
+        // $user->load('roles');
+        return view('hospitals.edit', compact('hospital'));
     }
 
     /**
@@ -99,34 +88,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserRequest $request, User $user)
-    {
-        $user->update($request->validated());
-        $user->roles()->sync($request->input('roles', []));
-
-        return redirect()->route('users.index');
-    }
-
-    public function ResetPassword($id)
+    public function update(Request $request, $id)
     {
         abort_if(Gate::denies('SuperAdmin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $user = User::find($id);
-    
-        $roles = Roles::pluck('title', 'id');
+        $hospitals->update($request->validated());
+        // $user->roles()->sync($request->input('roles', []));
 
-        $user->load('roles');
-        return view('users.reset', compact('user', 'roles'));
-    }
-
-    public function updatePassword(UpdateUserPasswordRequest  $request, $id)
-    {
-        $data = $request->all();
-        $user = User::find($id);
-        $user->password = bcrypt($data['password']);
-        $user->password_status = 1;
-        $user->save();
-        return redirect()->route('users.index');
+        return redirect()->route('hospitals.index');
     }
 
     /**
@@ -139,8 +108,9 @@ class UserController extends Controller
     {
         abort_if(Gate::denies('SuperAdmin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $user->delete();
+        // $user->delete();
 
-        return redirect()->route('users.index');
+        // return redirect()->route('users.index');
     }
+
 }
