@@ -48,9 +48,6 @@ class HospitalsController extends Controller
     {
         abort_if(Gate::denies('Admin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-         $hospitals = Hospitals::all();
-
-         return view('hospitals.index', compact('hospitals'));
     }
 
     /**
@@ -62,9 +59,6 @@ class HospitalsController extends Controller
     {
         abort_if(Gate::denies('Admin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-         $hospitals = Hospitals::all();
-
-         return view('hospitals.index', compact('hospitals'));
     }
 
     /**
@@ -76,9 +70,7 @@ class HospitalsController extends Controller
     {
         abort_if(Gate::denies('Admin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        //  $hospitals = Hospitals::all();
 
-        //  return view('hospitals.index', compact('hospitals'));
     }
 
     /**

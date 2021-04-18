@@ -17,12 +17,12 @@
             </a>
           </div>
           <div class="grid grid-flow-col auto-cols-max">
-            <a href="#" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded-full">
+            <a href="{{ route('hospitals.createBuilding') }}" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded-full">
               Add Building
             </a>
           </div>
           <div class="grid grid-flow-col auto-cols-max">
-            <a href="#" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded-full">
+            <a href="{{ route('hospitals.createFloor') }}" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded-full">
               Add Floor
             </a>
           </div>
