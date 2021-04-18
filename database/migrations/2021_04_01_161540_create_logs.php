@@ -16,6 +16,7 @@ class CreateLogs extends Migration
         Schema::create('logs', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
+            $table->string('body')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
