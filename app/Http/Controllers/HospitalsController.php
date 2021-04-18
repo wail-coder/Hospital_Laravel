@@ -19,7 +19,7 @@ class HospitalsController extends Controller
      */
     public function index()
     {
-        abort_if(Gate::denies('SuperAdmin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('Admin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         // $hospitals = Hospitals::with('roles')->get();
         $hospitals = Hospitals::all();
@@ -39,6 +39,48 @@ class HospitalsController extends Controller
         //
     }
 
+     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createBuilding()
+    {
+        abort_if(Gate::denies('Admin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+         $hospitals = Hospitals::all();
+
+         return view('hospitals.index', compact('hospitals'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createFloor()
+    {
+        abort_if(Gate::denies('Admin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+         $hospitals = Hospitals::all();
+
+         return view('hospitals.index', compact('hospitals'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createRoom()
+    {
+        abort_if(Gate::denies('Admin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        //  $hospitals = Hospitals::all();
+
+        //  return view('hospitals.index', compact('hospitals'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -47,7 +89,7 @@ class HospitalsController extends Controller
      */
     public function store(Request $request)
     {
-        abort_if(Gate::denies('SuperAdmin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('Admin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         //
     }
@@ -60,7 +102,7 @@ class HospitalsController extends Controller
      */
     public function show(Hospitals $hospital)
     {
-        abort_if(Gate::denies('SuperAdmin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('Admin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return view('hospitals.show', compact('hospital'));
     }
@@ -73,7 +115,7 @@ class HospitalsController extends Controller
      */
     public function edit(Hospitals $hospital)
     {
-        abort_if(Gate::denies('SuperAdmin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('Admin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         // $roles = Roles::pluck('title', 'id');
 
@@ -90,7 +132,7 @@ class HospitalsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        abort_if(Gate::denies('SuperAdmin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('Admin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $hospitals->update($request->validated());
         // $user->roles()->sync($request->input('roles', []));
@@ -106,7 +148,7 @@ class HospitalsController extends Controller
      */
     public function destroy(User $user)
     {
-        abort_if(Gate::denies('SuperAdmin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('Admin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         // $user->delete();
 

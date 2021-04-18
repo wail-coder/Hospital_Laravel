@@ -17,7 +17,7 @@
                     </x-jet-nav-link>
                 </div>
 
-                @can('SuperAdmin_access')
+                @can('Admin_access')
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('hospitals.index') }}" :active="request()->routeIs('hospitals.*')">
                         {{ __('Hospitals') }}
@@ -25,7 +25,7 @@
                 </div>
                 @endcan
                 
-                @can('SuperAdmin_access')
+                @can('Admin_access')
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.*')">
                         {{ __('Users') }}

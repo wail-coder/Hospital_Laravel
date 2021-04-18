@@ -21,7 +21,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        abort_if(Gate::denies('SuperAdmin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('Admin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $users = User::with('roles')->get();
         // $users = User::all();
@@ -36,7 +36,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        abort_if(Gate::denies('SuperAdmin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('Admin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return view('users.create');
 
@@ -51,7 +51,7 @@ class UserController extends Controller
      */
     public function store(AddUserRequest $request)
     {
-        abort_if(Gate::denies('SuperAdmin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('Admin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $user = User::create([
             'name' => $request->name,
@@ -73,7 +73,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        abort_if(Gate::denies('SuperAdmin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('Admin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return view('users.show', compact('user'));
     }
@@ -86,7 +86,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        abort_if(Gate::denies('SuperAdmin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('Admin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $roles = Roles::pluck('title', 'id');
 
@@ -103,6 +103,8 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
+        abort_if(Gate::denies('Admin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         $user->update($request->validated());
         $user->roles()->sync($request->input('roles', []));
 
@@ -111,7 +113,7 @@ class UserController extends Controller
 
     public function ResetPassword($id)
     {
-        abort_if(Gate::denies('SuperAdmin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('Admin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $user = User::find($id);
     
@@ -123,6 +125,8 @@ class UserController extends Controller
 
     public function updatePassword(UpdateUserPasswordRequest  $request, $id)
     {
+        abort_if(Gate::denies('Admin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         $data = $request->all();
         $user = User::find($id);
         $user->password = bcrypt($data['password']);
@@ -139,7 +143,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        abort_if(Gate::denies('SuperAdmin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('Admin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $user->delete();
 
