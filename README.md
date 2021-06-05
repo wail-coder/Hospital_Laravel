@@ -33,7 +33,7 @@ php artisan db:seed
 
 ```
 
-2- follow these steps (if there is previous tags existing):
+3- follow these steps (if there is previous tags existing):
 <br />
 
 ```sh
