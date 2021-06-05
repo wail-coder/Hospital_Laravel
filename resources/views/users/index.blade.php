@@ -54,7 +54,7 @@
                   Name
                 </th>
                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Title
+                  Job Title
                 </th>
                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Status
@@ -89,8 +89,8 @@
                   </div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-sm text-gray-900">Regional Paradigm Technician</div>
-                  <div class="text-sm text-gray-500">Optimization</div>
+                  <div class="text-sm text-gray-900">{{$user->job_title}}</div>
+                  <!-- <div class="text-sm text-gray-500">sub-title</div> -->
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                     @if ($user->password_status == '0')

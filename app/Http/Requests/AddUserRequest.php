@@ -33,6 +33,10 @@ class AddUserRequest extends FormRequest
                 'required',
                 'unique:users,email',
             ],
+            'job_title'   => [
+                'required',
+                'string',
+            ],
             'password'    => [
                 'required',
                 'string',

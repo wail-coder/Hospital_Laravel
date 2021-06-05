@@ -16,6 +16,7 @@ class CreateHospitals extends Migration
         Schema::create('hospitals', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
+            $table->string('location')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

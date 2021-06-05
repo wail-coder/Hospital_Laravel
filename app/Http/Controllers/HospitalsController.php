@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UpdateHospitalRequest;
 use App\Models\Hospitals;
 use App\Models\Roles;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
-
+use Session;
 
 class HospitalsController extends Controller
 {
@@ -35,6 +36,8 @@ class HospitalsController extends Controller
     public function create()
     {
         abort_if(Gate::denies('SuperAdmin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        return view('hospitals.create');
 
         //
     }
@@ -83,7 +86,14 @@ class HospitalsController extends Controller
     {
         abort_if(Gate::denies('Admin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        //
+        $hospitals = Hospitals::create([
+            'name' => $request->name,
+            'location' => $request->location,
+            ]);
+
+        
+        Session::flash('message-success', 'The hospital has been created'); 
+        return $this->index();
     }
 
     /**
@@ -95,6 +105,8 @@ class HospitalsController extends Controller
     public function show(Hospitals $hospital)
     {
         abort_if(Gate::denies('Admin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        
 
         return view('hospitals.show', compact('hospital'));
     }
@@ -122,11 +134,11 @@ class HospitalsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateHospitalRequest $request, Hospitals $hospital)
     {
         abort_if(Gate::denies('Admin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $hospitals->update($request->validated());
+        $hospital->update($request->validated());
         // $user->roles()->sync($request->input('roles', []));
 
         return redirect()->route('hospitals.index');
@@ -138,13 +150,13 @@ class HospitalsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Hospitals $hospital)
     {
         abort_if(Gate::denies('Admin_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        // $user->delete();
+        $hospital->delete();
 
-        // return redirect()->route('users.index');
+        return redirect()->route('hospitals.index');
     }
 
 }

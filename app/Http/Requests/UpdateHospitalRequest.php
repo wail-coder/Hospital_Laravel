@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
 
 class UpdateHospitalRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class UpdateHospitalRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return Gate::allows('Admin_access');
     }
 
     /**
@@ -24,7 +25,13 @@ class UpdateHospitalRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'    => [
+                'string',
+                'required',
+            ],
+            'location'   => [
+                'required',
+            ],
         ];
     }
 }

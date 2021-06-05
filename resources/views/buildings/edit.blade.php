@@ -20,14 +20,6 @@
                               <p class="text-sm text-red-600">{{ $message }}</p>
                           @enderror
                       </div>
-                      <div class="px-4 py-5 bg-white sm:p-6">
-                          <label for="location" class="block font-medium text-sm text-gray-700">Location</label>
-                          <input type="text" name="location" id="location" type="text" class="form-input rounded-md shadow-sm mt-1 block w-full"
-                                 value="{{ old('location', $hospital->location) }}" />
-                          @error('location')
-                              <p class="text-sm text-red-600">{{ $message }}</p>
-                          @enderror
-                      </div>
 
                       <div class="flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6">
                           <button class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
