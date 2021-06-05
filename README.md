@@ -17,9 +17,10 @@ HospitalsSystem requires
 - [composer](https://getcomposer.org/).
 - [Node.js](https://nodejs.org/).
 
-steps:
-1- download the code from github
-2- follow these steps:
+Steps:<br />
+1- download the code from github<br />
+
+2- follow these steps (if first time):
 
 ```sh
 cd HospitalsSystem
@@ -30,4 +31,14 @@ php artisan key:generate
 php artisan migrate
 php artisan db:seed
 
+```
+
+2- follow these steps (if there is previous tags existing):
+<br />
+
+```sh
+cd HospitalsSystem
+php artisan key:generate
+php artisan migrate:fresh
+php artisan db:seed
 ```
