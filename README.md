@@ -31,3 +31,11 @@ php artisan migrate
 php artisan db:seed
 
 ```
+
+
+if want to refresh database
+```sh
+php artisan migrate:fresh
+php artisan db:seed
+
+```
