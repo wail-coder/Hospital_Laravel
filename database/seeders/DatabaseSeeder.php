@@ -20,11 +20,14 @@ class DatabaseSeeder extends Seeder
             PermissionRoleTableSeeder::class,
             UsersTableSeeder::class,
             RoleUserTableSeeder::class,
-            buildingsTableSeeder::class,
-            codesTableSeeder::class,
-            floorsTableSeeder::class,
             hospitalsTableSeeder::class,
+            codesTableSeeder::class,
+            buildingsTableSeeder::class,
+            floorsTableSeeder::class,
             roomsTableSeeder::class,
+            groupsTableSeeder::class,
+            CodesUserTableSeeder::class,
+            usersGroupsTableSeeder::class,
         ]);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFloorsRooms extends Migration
+class CreateRooms extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class CreateFloorsRooms extends Migration
      */
     public function up()
     {
-        Schema::create('floors_rooms', function (Blueprint $table) {
+        Schema::create('rooms', function (Blueprint $table) {
+            $table->id();
+            $table->string('number');
+            $table->string('name')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
             $table->foreignId('floors_id')->references('id')->on('floors')->cascadeOnDelete();
-            $table->foreignId('rooms_id')->references('id')->on('rooms')->cascadeOnDelete();
         });
     }
 
@@ -26,6 +30,6 @@ class CreateFloorsRooms extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('floors_rooms');
+        Schema::dropIfExists('rooms');
     }
 }

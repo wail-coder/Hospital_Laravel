@@ -10,6 +10,8 @@ class Floors extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'name',
+        'number',
+        'buildings_id',
     ];
 }

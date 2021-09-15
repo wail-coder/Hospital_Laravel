@@ -13,4 +13,9 @@ class Hospitals extends Model
         'name',
         'location'
     ];
+
+    public function buildings()
+    {
+        return $this->hasMany(Buildings::class);
+    }
 }

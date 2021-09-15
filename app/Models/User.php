@@ -67,6 +67,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Roles::class); 
     }
 
+    public function codes()
+    {
+        return $this->belongsToMany(Codes::class); 
+    }
+
     // Only accept a valid password and
     // hash a password before saving
     // public function setPasswordAttribute($password)

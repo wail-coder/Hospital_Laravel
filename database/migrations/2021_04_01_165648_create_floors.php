@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHospitalsBuildings extends Migration
+class CreateFloors extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class CreateHospitalsBuildings extends Migration
      */
     public function up()
     {
-        Schema::create('hospitals_buildings', function (Blueprint $table) {
-            $table->foreignId('hospitals_id')->references('id')->on('hospitals')->cascadeOnDelete();
+        Schema::create('floors', function (Blueprint $table) {
+            $table->id();
+            $table->string('number');
+            $table->string('name')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
             $table->foreignId('buildings_id')->references('id')->on('buildings')->cascadeOnDelete();
         });
     }
@@ -26,6 +30,6 @@ class CreateHospitalsBuildings extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hospitals_buildings');
+        Schema::dropIfExists('floors');
     }
 }

@@ -15,9 +15,11 @@ class CreateBuildings extends Migration
     {
         Schema::create('buildings', function (Blueprint $table) {
             $table->id();
+            $table->string('number');
             $table->string('name')->nullable();
             $table->timestamps();
             $table->softDeletes();
+            $table->foreignId('hospitals_id')->references('id')->on('hospitals')->cascadeOnDelete();
         });
     }
 

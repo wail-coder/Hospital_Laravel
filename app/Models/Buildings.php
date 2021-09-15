@@ -10,6 +10,13 @@ class Buildings extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'name',
+        'hospitals_id',
+        'number',
     ];
+
+    public function hospitals()
+    {
+        return $this->hasOne(Hospitals::class);
+    }
 }
