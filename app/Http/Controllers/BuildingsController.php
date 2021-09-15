@@ -134,7 +134,8 @@ class BuildingsController extends Controller
             $request->session()->put('floors_number', $request->floor_number);
 
 
-
+            
+            // d
             return redirect()->route('buildings.createSecondStep',$id);
             // ->with('building_number', $request->building_number)
             // ->with('floor_number', $floor_number);        
