@@ -127,6 +127,7 @@ class HospitalsController extends Controller
         return view('hospitals.edit', compact('hospital'));
     }
 
+    
     /**
      * Update the specified resource in storage.
      *
