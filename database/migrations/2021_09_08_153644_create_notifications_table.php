@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 class CreateNotificationsTable extends Migration
 {
     /**
-     * Run the migrations.
+     * run the migrations.
      *
      * @return void
      */
